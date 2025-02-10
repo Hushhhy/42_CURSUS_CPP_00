@@ -6,9 +6,17 @@ CXXFLAGS += -Wall -Wextra -Werror -std=c++98
 SRC = Contact.cpp\
 	Phonebook.cpp\
 	main.cpp\
-OBJ = $(SRC:.cpp=.o)
+
+OBJ_DIR = Objs
+OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
