@@ -53,12 +53,12 @@ void Phonebook::searchContacts() const {
     std::cout << "Enter the index of the contact to display: ";
     std::cin >> index;
     if (std::cin.fail()) {
-        std::cin.clear(); // Clear the error flag
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore the rest of the input
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "Error: Invalid input." << std::endl;
         return;
     }
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore the rest of the input
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     if (index < 1 || index > 8 || contacts[index - 1].isEmpty()) {
         std::cout << "Error: Invalid index." << std::endl;
